@@ -2,7 +2,7 @@ FROM oracle/weblogic:12.1.3-generic
 
 # Maintainer
 # ----------
-MAINTAINER Giovanni PERTA <gioperta@gmail.com>
+MAINTAINER giodocker
 
 ARG CUSTOM_DOMAIN_NAME="${CUSTOM_DOMAIN_NAME:-base_domain}" 
 
