@@ -1,0 +1,1 @@
+this folder is the mount point mapped with docker for weblogic
