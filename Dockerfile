@@ -1,4 +1,4 @@
-FROM oracle/weblogic:12.1.3-generic
+FROM store/oracle/weblogic:12.2.1.4
 
 # Maintainer
 # ----------
@@ -17,8 +17,8 @@ ENV DOMAIN_NAME="${CUSTOM_DOMAIN_NAME}" \
     ORACLE_HOME=/u01/oracle \
     SCRIPT_FILE=/u01/oracle/createAndStartWLSDomain.sh \
     CONFIG_JVM_ARGS="-Dweblogic.security.SSL.ignoreHostnameVerification=true"  \
-    DOMAIN_HOME="/u01/oracle/user_projects/domains/${DOMAIN_NAME}" \ 
-PATH=$PATH:/u01/oracle/oracle_common/common/bin:/u01/oracle/wlserver/common/bin:${DOMAIN_HOME}:${DOMAIN_HOME}/bin:/u01/oracle
+    DOMAIN_HOME="/u01/oracle/user_projects/domains/${DOMAIN_NAME}" \
+	PATH=$PATH:/u01/oracle/oracle_common/common/bin:/u01/oracle/wlserver/common/bin:${DOMAIN_HOME}:${DOMAIN_HOME}/bin:/u01/oracle
 
 # Domain and Server environment variables
 # ------------------------------------------------------------
@@ -43,8 +43,8 @@ RUN chown -R oracle:oracle /u01/oracle/*.sh && \
     chmod +xw /u01/oracle/*.py && \
     mkdir -p $PRE_DOMAIN_HOME && \
     chown -R oracle:oracle $PRE_DOMAIN_HOME && \
-    chmod -R a+xwr $PRE_DOMAIN_HOME && \ 
-    mkdir -p $DOMAIN_HOME && \ 
+    chmod -R a+xwr $PRE_DOMAIN_HOME && \
+    mkdir -p $DOMAIN_HOME && \
     chmod -R a+xwr $DOMAIN_HOME
 
 

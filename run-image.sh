@@ -27,10 +27,14 @@ echo docker external volume: $VOLUME
 
 # set write privileges when execute with docker
 chown 1000:1000 -R $VOLUME
-chmod 777 -R $VOLUME
+# chmod 777 -R $VOLUME
 
 # docker run -d --name wlsadmin --hostname wlsadmin -p 7001:7001 --env-file ./container-scripts/domain.properties -e ADMIN_PASSWORD=weblogic01 -v /dvol:/u01/oracle/user_projects custom_domain
 
 # docker run -d --name wl-gp-generic --hostname wlsadmin -p 7001:7001 --env-file ./container-scripts/domain.properties -e ADMIN_PASSWORD=weblogic01 -v /dvol/oracle/weblogic:/u01/oracle/user_projects weblogic-gp-generic:12.1.3
 # docker run --name wl-gp-generic --hostname wlsadmin -p 7001:7001 -p 7002:7002 --env-file ./container-scripts/domain.properties -e DOMAIN_NAME=ssl_domain -e ADMIN_PASSWORD=weblogic01 -v $VOLUME:/u01/oracle/user_projects weblogic-gp-generic:12.1.3
-docker run --name wl-gp-generic-ssl -p 7001:7001 -p 7002:7002 --env-file ./container-scripts/domain.properties -v $VOLUME:/u01/oracle/user_projects giodocker/weblogic:12.1.3-generic-ssl
+#docker run --name wl-gp-generic-ssl -p 7001:7001 -p 7002:7002 --env-file ./container-scripts/domain.properties -v $VOLUME:/u01/oracle/user_projects giodocker/weblogic:12.1.3-generic-ssl
+#docker run --name wl-gp-generic-ssl -p 7001:7001 -p 7002:7002 --env-file ./container-scripts/domain.properties -v $VOLUME:/u01/oracle/user_projects giodocker/weblogic:12.1.3-generic-ssl
+
+docker run -d --name gp-weblogic -p 7001:7001 -p 7002:7002 --env-file ./container-scripts/domain.properties -v $VOLUME:/u01/oracle/user_projects giodocker/weblogic:12.2.1.4
+docker ps
